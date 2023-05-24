@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:id="@+id/main_layout"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:id="@+id/lvcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_weight="0.5"
+        android:background="#000"
+        android:orientation="horizontal"
+        android:padding="1dp"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/txtCompany"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="Company"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:padding="3dp"
+            android:text="Product"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txtPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:padding="3dp"
+            android:text="Price"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lstView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@+id/lvcontainer"
+        android:layout_weight="8.5">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/txtresulttext"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@android:id/list"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_weight="1"
+        android:gravity="left"
+        android:text=""
+        android:textColor="#FFF55F54"
+        android:textSize="10sp"
+        android:textStyle="italic|bold"/>
+
+</LinearLayout>

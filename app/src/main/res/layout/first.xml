@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/lvContainer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffe6e6e6"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/txtproductcompany"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="NAME"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/txtproductname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:padding="3dp"
+            android:text="ISSN"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/txtproductprice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:padding="3dp"
+            android:text="IMPACTFACTOR"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+</LinearLayout>
