@@ -1,6 +1,7 @@
 package com.ako.myexcel
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -27,15 +28,43 @@ import java.io.InputStream
 
 class MainActivity : AppCompatActivity() {
     var lbl: TextView? = null
+    lateinit var edtsearch:EditText
+    lateinit var btnsearch:Button
     var controller: DBHelper? = DBHelper(this)
     var lv: ListView? = null
     private var mLayout: View? = null
+    var prolist= ArrayList<HashMap<String, String>>()
     var filePicker: ActivityResultLauncher<Intent>? = null
+    lateinit var company:TextView
+    lateinit var product:TextView
+    lateinit var price:TextView
+    lateinit var result:RelativeLayout
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         lbl = findViewById<View>(R.id.txtresulttext) as TextView
         lv = findViewById(R.id.lstView)
+        edtsearch=findViewById(R.id.edtsearch)
+        btnsearch=findViewById(R.id.searchbtn)
+
+        company=findViewById(R.id.txtcompany)
+        product=findViewById(R.id.txtproduct)
+        price=findViewById(R.id.txtprice)
+        result=findViewById(R.id.resultview)
+
+        btnsearch.setOnClickListener {
+            val data=prolist.filter {
+                it[DBHelper.company].equals(edtsearch.text.toString())
+            }
+            if(data.size!=0){
+                result.visibility=View.VISIBLE
+                company.setText("Company name is ${data[0][DBHelper.company]}")
+                product.setText("Product name is ${data[0][DBHelper.product]}")
+                price.setText("Price is ${data[0][DBHelper.price]}")
+            }
+            Log.d("Result",data.toString())
+        }
         mLayout = findViewById(R.id.main_layout)
         filePicker = registerForActivityResult<Intent, ActivityResult>(
             ActivityResultContracts.StartActivityForResult()
@@ -75,14 +104,15 @@ class MainActivity : AppCompatActivity() {
             if (controller == null) {
                 val controller = DBHelper(this@MainActivity)
             }
-            val myList = controller!!.products
-            if (myList.size != 0) {
+            prolist = controller!!.products
+            Log.d("Resultmylist",prolist.toString())
+            if (prolist.size != 0) {
                 lv = findViewById(R.id.lstView)
                 val listadapter: ListAdapter = SimpleAdapter(
-                    this@MainActivity, myList,
+                    this@MainActivity, prolist,
                     R.layout.first, arrayOf<String>(
-                        DBHelper.Company, DBHelper.Product,
-                        DBHelper.Price
+                        DBHelper.company, DBHelper.product,
+                        DBHelper.price
                     ), intArrayOf(
                         R.id.txtproductcompany, R.id.txtproductname,
                         R.id.txtproductprice

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
-    android:id="@+id/main_layout"
-    android:orientation="vertical"
-    android:weightSum="10">
+    android:id="@+id/main_layout">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/lvcontainer"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_weight="0.5"
         android:background="#000"
         android:orientation="horizontal"
         android:padding="1dp"
@@ -51,28 +52,69 @@
             android:textColor="#fff"
             android:textSize="16sp" />
     </LinearLayout>
-
+        <EditText
+            android:layout_below="@id/lvcontainer"
+            android:hint="Enter Id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edtsearch"/>
+        <Button
+            android:hint="Find"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtsearch"
+            android:id="@+id/searchbtn"/>
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/resultview"
+        android:layout_below="@+id/searchbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Company"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtcompany"/>
+        <TextView
+            android:layout_below="@id/txtcompany"
+            android:text="Company"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtproduct"/>
+        <TextView
+            android:layout_below="@id/txtproduct"
+            android:text="Company"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtprice"/>
+    </RelativeLayout>
     <ListView
         android:id="@+id/lstView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_below="@+id/lvcontainer"
-        android:layout_weight="8.5">
+        android:layout_height="500dp"
+        android:layout_below="@+id/resultview">
 
     </ListView>
-
     <TextView
+
         android:id="@+id/txtresulttext"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_below="@android:id/list"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lstView"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="2dp"
-        android:layout_weight="1"
-        android:gravity="left"
-        android:text=""
         android:textColor="#FFF55F54"
         android:textSize="10sp"
         android:textStyle="italic|bold"/>
-
-</LinearLayout>
+</RelativeLayout>
+</ScrollView>
